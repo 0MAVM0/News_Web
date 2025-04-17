@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 class Category(models.Model):
@@ -34,3 +35,17 @@ class News(models.Model):
         ordering = ["-published_at"]
         verbose_name = "News"
         verbose_name_plural = "News"
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    news = models.ForeignKey(News, on_delete=models.CASCADE)
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    status = models.BooleanField(default=True)
+
+    def __str__(self) -> str:
+        return f"{self.user} - {self.news}"
+
+    class Meta:
+        ordering = ["-created_at"]
