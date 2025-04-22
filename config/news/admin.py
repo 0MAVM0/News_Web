@@ -1,7 +1,9 @@
 from django.contrib import admin
-from django.apps import apps
+from .models import News
 
-app = apps.get_app_config('news')
-
-for model_name, model in app.models.items():
-    admin.site.register(model)
+@admin.register(News)
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ("title", "category", "status", "created_at", "published_at", "updated_at")
+    list_filter = ("status", "category")
+    search_fields = ("title", "body")
+    prepopulated_fields = { "slug" : ("title",) }
