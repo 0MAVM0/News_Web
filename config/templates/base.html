@@ -22,7 +22,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-4">
                     <div class="logo">
-                        <a href="">
+                        <a href="{% url 'home' %}">
                             <img src="{% static 'img/logo.png' %}" alt="Logo">
                         </a>
                     </div>
@@ -62,8 +62,8 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
                             <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">Sub Item 1</a>
-                                <a href="#" class="dropdown-item">Sub Item 2</a>
+                                <a href="#" class="dropdown-item">Overseas</a>
+                                <a href="#" class="dropdown-item">Local</a>
                             </div>
                         </div>
                         <a href="{% url 'single_page' %}" class="nav-item nav-link">Single Page</a>
