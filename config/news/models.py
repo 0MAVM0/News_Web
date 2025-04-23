@@ -1,6 +1,10 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+class PublishedManager(models.Manager):
+    def get_queryset(self) -> models.QuerySet:
+        return super().get_queryset().filter(status=self.model.Status.Published)
+
 class Category(models.Model):
     name = models.CharField(max_length=150, null=False, blank=False, unique=True, verbose_name="Category's Name")
     created_at = models.DateTimeField(auto_now_add=True)
@@ -27,6 +31,9 @@ class News(models.Model):
     published_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.Draft)
+
+    objects = models.Manager()
+    published = PublishedManager()
 
     def __str__(self) -> str:
         return f"{self.title}"
