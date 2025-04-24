@@ -3,10 +3,15 @@ from .models import *
 
 def home_page(request):
     a_piece_of_news = News.published.order_by("-id").first()
-    latest_news = News.published.order_by("-id")[:5]
+    latest = News.published.order_by("-id")[:5]
+    sports_news = News.published.filter(category__name="Sports")
+    technologies_news = News.published.filter(category__name="Technologies")
+
     context = {
         "a_piece_of_news" : a_piece_of_news,
-        "latest_news" : latest_news,
+        "latest" : latest,
+        "sports" : sports_news,
+        "technologies" : technologies_news,
     }
 
     return render(request, "index.html", context)
