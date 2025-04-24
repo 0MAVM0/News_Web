@@ -2,8 +2,12 @@ from django.shortcuts import render
 from .models import *
 
 def home_page(request):
-    latest_news = News.published.order_by("-id").first()
-    context = { "latest_news" : latest_news }
+    a_piece_of_news = News.published.order_by("-id").first()
+    latest_news = News.published.order_by("-id")[:5]
+    context = {
+        "a_piece_of_news" : a_piece_of_news,
+        "latest_news" : latest_news,
+    }
 
     return render(request, "index.html", context)
 

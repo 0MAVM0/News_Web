@@ -9,61 +9,32 @@
             <div class="row">
                 <div class="col-md-6 tn-left">
                     <div class="tn-img">
-                        <img src="{{ latest_news.image.url }}" />
+                        <img src="{{ a_piece_of_news.image.url }}" />
                         <div class="tn-content">
                             <div class="tn-content-inner">
-                                <a class="tn-date" href=""><i class="far fa-clock"></i>{{ latest_news.published_at }}</a>
-                                <a class="tn-title" href="">{{ latest_news.title }}</a>
+                                <a class="tn-date" href=""><i class="far fa-clock"></i>{{ a_piece_of_news.published_at }}</a>
+                                <a class="tn-title" href="">{{ a_piece_of_news.title }}</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 tn-right">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="tn-img">
-                                <img src="{% static 'img/top-news-2.jpg' %}" />
-                                <div class="tn-content">
-                                    <div class="tn-content-inner">
-                                        <a class="tn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                        <a class="tn-title" href="">Integer faucibus pharetra odio</a>
+                        {% for news in latest_news %}
+                            {% if forloop.counter > 1 %}
+                                <div class="col-md-6">
+                                    <div class="tn-img">
+                                        <img src="{{ news.image.url }}" />
+                                        <div class="tn-content">
+                                            <div class="tn-content-inner">
+                                                <a class="tn-date" href=""><i class="far fa-clock"></i>{{ news.published_at }}</a>
+                                                <a class="tn-title" href="">{{ news.title }}</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="tn-img">
-                                <img src="{% static 'img/top-news-3.jpg' %}" />
-                                <div class="tn-content">
-                                    <div class="tn-content-inner">
-                                        <a class="tn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                        <a class="tn-title" href="">Nulla vitae pharetra ligula</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="tn-img">
-                                <img src="{% static 'img/top-news-4.jpg' %}" />
-                                <div class="tn-content">
-                                    <div class="tn-content-inner">
-                                        <a class="tn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                        <a class="tn-title" href="">Ut ac euismod tellus a blandit</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="tn-img">
-                                <img src="{% static 'img/top-news-5.jpg' %}" />
-                                <div class="tn-content">
-                                    <div class="tn-content-inner">
-                                        <a class="tn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                        <a class="tn-title" href="">Cras ac egestas sem nec euismod</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
