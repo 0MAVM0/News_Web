@@ -6,12 +6,16 @@ def home_page(request):
     latest = News.published.order_by("-id")[:5]
     sports_news = News.published.filter(category__name="Sports")
     technologies_news = News.published.filter(category__name="Technologies")
+    local_news = News.published.filter(category__name="Local")
+    overseas_news = News.published.filter(category__name="Overseas")
 
     context = {
         "a_piece_of_news" : a_piece_of_news,
         "latest" : latest,
         "sports" : sports_news,
         "technologies" : technologies_news,
+        "local" : local_news,
+        "overseas" : overseas_news,
     }
 
     return render(request, "index.html", context)
@@ -19,5 +23,5 @@ def home_page(request):
 def contact(request):
     return render(request, "contact.html")
 
-def single_page(request):
-    return render(request, "single-page.html")
+# def single_page(request):
+#     return render(request, "single-page.html")
