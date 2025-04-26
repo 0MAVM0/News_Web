@@ -23,5 +23,8 @@ def home_page(request):
 def contact(request):
     return render(request, "contact.html")
 
-# def single_page(request):
-#     return render(request, "single-page.html")
+def single_page(request, id):
+    news = News.objects.filter(id=id).first()
+    context = { "a_piece_of_news" : news}
+
+    return render(request, "single-page.html", context)
