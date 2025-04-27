@@ -34,3 +34,21 @@ def sports_news(request):
     context = { "sports" : sports_news }
 
     return render(request, "sports.html", context)
+
+def technology_news(request):
+    sports_news = News.objects.filter(category__name="Technologies")
+    context = { "technologies" : sports_news }
+
+    return render(request, "technologies.html", context)
+
+def local_news(request):
+    sports_news = News.objects.filter(category__name="Local")
+    context = { "local_news" : sports_news }
+
+    return render(request, "local.html", context)
+
+def overseas_news(request):
+    sports_news = News.objects.filter(category__name="Overseas")
+    context = { "overseas_news" : sports_news }
+
+    return render(request, "overseas.html", context)
