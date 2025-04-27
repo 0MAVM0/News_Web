@@ -13,7 +13,7 @@
                         <div class="tn-content">
                             <div class="tn-content-inner">
                                 <a class="tn-date" href=""><i class="far fa-clock"></i>{{ a_piece_of_news.published_at }}</a>
-                                <a class="tn-title" href="{% url 'single_page' a_piece_of_news.id %}">{{ a_piece_of_news.title }}</a>
+                                <a class="tn-title" href="{% url 'single_page' a_piece_of_news.slug %}">{{ a_piece_of_news.title }}</a>
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                                         <div class="tn-content">
                                             <div class="tn-content-inner">
                                                 <a class="tn-date" href=""><i class="far fa-clock"></i>{{ news.published_at }}</a>
-                                                <a class="tn-title" href="{% url 'single_page' news.id %}">{{ news.title }}</a>
+                                                <a class="tn-title" href="{% url 'single_page' news.slug %}">{{ news.title }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -53,7 +53,7 @@
                                     <div class="cn-content">
                                         <div class="cn-content-inner">
                                             <a class="cn-date" href=""><i class="far fa-clock"></i>{{ news.published_at }}</a>
-                                            <a class="cn-title" href="{% url 'single_page' news.id %}">{{ news.title }}</a>
+                                            <a class="cn-title" href="{% url 'single_page' news.slug %}">{{ news.title }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                     <div class="cn-content">
                                         <div class="cn-content-inner">
                                             <a class="cn-date" href=""><i class="far fa-clock"></i>{{ news.published_at }}</a>
-                                            <a class="cn-title" href="{% url 'single_page' news.id %}">{{ news.title }}</a>
+                                            <a class="cn-title" href="{% url 'single_page' news.slug %}">{{ news.title }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                                     <div class="cn-content">
                                         <div class="cn-content-inner">
                                             <a class="cn-date" href=""><i class="far fa-clock"></i>{{ news.published_at }}</a>
-                                            <a class="cn-title" href="{% url 'single_page' news.id %}">{{ news.title }}</a>
+                                            <a class="cn-title" href="{% url 'single_page' news.slug %}">{{ news.title }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@
                                     <div class="cn-content">
                                         <div class="cn-content-inner">
                                             <a class="cn-date" href=""><i class="far fa-clock"></i>{{ news.published_at }}</a>
-                                            <a class="cn-title" href="{% url 'single_page' news.id %}">{{ news.title }}</a>
+                                            <a class="cn-title" href="{% url 'single_page' news.slug %}">{{ news.title }}</a>
                                         </div>
                                     </div>
                                 </div>
