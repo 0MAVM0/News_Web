@@ -28,3 +28,9 @@ def single_page(request, slug):
     context = { "a_piece_of_news" : news}
 
     return render(request, "single-page.html", context)
+
+def sports_news(request):
+    sports_news = News.objects.filter(category__name="Sports")
+    context = { "sports" : sports_news }
+
+    return render(request, "sports.html", context)

@@ -15,6 +15,7 @@
     <link href="{% static 'lib/slick/slick.css' %}" rel="stylesheet">
     <link href="{% static 'lib/slick/slick-theme.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cards.css' %}" rel="stylesheet">
 </head>
 <body>
     <div class="top-header">
@@ -56,7 +57,7 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav m-auto">
                         <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
-                        <a href="#" class="nav-item nav-link">Sport</a>
+                        <a href="{% url "sports" %}" class="nav-item nav-link">Sport</a>
                         <a href="#" class="nav-item nav-link">Texnalogiyalar</a>
                         <a href="#" class="nav-item nav-link">Mahalliy</a>
                         <a href="#" class="nav-item nav-link">Horij</a>

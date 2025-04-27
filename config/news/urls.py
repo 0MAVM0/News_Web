@@ -5,4 +5,5 @@ urlpatterns = [
     path("", home_page, name="home"),
     path("contact_page/", contact, name="contact"),
     path("detail_of/<slug:slug>/", single_page, name="single_page"),
+    path("sport/", sports_news, name="sports"),
 ]
