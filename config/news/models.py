@@ -56,3 +56,14 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
+
+class Contact(models.Model):
+    name = models.CharField(max_length=255, null=False, blank=False, verbose_name="Name")
+    email = models.EmailField(max_length=255, null=False, blank=False, verbose_name="Email")
+    subject = models.CharField(max_length=255, null=False, blank=False, verbose_name="Subject")
+    message = models.TextField(null=False, blank=False, verbose_name="Message")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return f"{self.name}"
