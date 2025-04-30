@@ -27,6 +27,7 @@ class News(models.Model):
     image = models.ImageField(upload_to="news/", null=True, blank=True)
     body = models.TextField()
     slug = models.SlugField(max_length=255)
+    count = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     published_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)

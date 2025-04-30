@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 
 def home_page(request):
@@ -21,6 +21,16 @@ def home_page(request):
     return render(request, "index.html", context)
 
 def contact(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        subject = request.POST.get("subject")
+        message = request.POST.get("message")
+        contact = Contact(name=name, email=email, subject=subject, message=message)
+        contact.save()
+
+        return redirect("contact")
+
     return render(request, "contact.html")
 
 def single_page(request, slug):
