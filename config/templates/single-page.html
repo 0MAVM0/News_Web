@@ -21,8 +21,19 @@
                         <img src="{{ a_piece_of_news.image.url }}" />
                     </div>
                     <div class="sn-content">
-                        <a class="sn-title" href="">{{ a_piece_of_news.title }}</a>
-                        <a class="sn-date" href=""><i class="far fa-clock"></i>{{ a_piece_of_news.published_at }}</a>
+                        <a class="sn-title">
+                            {{ a_piece_of_news.title }}
+                        </a>
+                        <div class="d-flex justify-content-around mt-2">
+                            <a class="sn-date d-flex align-items-center">
+                                <i class="far fa-clock me-1"></i>
+                                {{ a_piece_of_news.published_at }}
+                            </a>
+                            <a class="sn-date d-flex align-items-center">
+                                <i class="bi bi-eye me-1"></i>
+                                {{ a_piece_of_news.count }}
+                            </a>
+                        </div>
                         <p>
                             {{ a_piece_of_news.body }}
                         </p>

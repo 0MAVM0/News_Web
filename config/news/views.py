@@ -35,6 +35,8 @@ def contact(request):
 
 def single_page(request, slug):
     news = News.objects.filter(slug=slug).first()
+    news.count += 1
+    news.save()
     context = { "a_piece_of_news" : news}
 
     return render(request, "single-page.html", context)
