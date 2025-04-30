@@ -10,12 +10,16 @@ class NewsAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("name", "created_at", "updated_at")
+    search_fields = ("name",)
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("user", "news", "status", "created_at", "updated_at")
+    list_filter = ("status", "created_at")
+    search_fields = ("user__username", "news__title", "comment")
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("name", "email", "subject", "created_at", "updated_at")
+    search_fields = ("name", "email", "subject", "message")
