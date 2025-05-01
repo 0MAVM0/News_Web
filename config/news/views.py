@@ -4,6 +4,7 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.urls import reverse_lazy
+from .forms import CommentForm
 from .models import *
 
 def home_page(request):
@@ -42,7 +43,24 @@ def single_page(request, slug):
     news = News.objects.filter(slug=slug).first()
     news.count += 1
     news.save()
-    context = { "a_piece_of_news" : news}
+    comments = Comment.objects.filter(news=news).first()
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.news = news
+            comment.save()
+            return redirect(f"/detail_of/{slug}")
+    else:
+        form = CommentForm()
+
+    context = {
+        "a_piece_of_news": news,
+        "form": form,
+        "comments": comments,
+    }
 
     return render(request, "single-page.html", context)
 
