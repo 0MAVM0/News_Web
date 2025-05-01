@@ -4,7 +4,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}{% endblock title %}</title>
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Bootstrap Ecommerce Template" name="keywords">
     <meta content="Bootstrap Ecommerce Template Free Download" name="description">
@@ -35,7 +38,7 @@
                         <button><i class="fa fa-search"></i></button>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4">
+                {% comment %} <div class="col-lg-3 col-md-4">
                     <div class="social">
                         <a href=""><i class="fab fa-twitter"></i></a>
                         <a href=""><i class="fab fa-facebook"></i></a>
@@ -43,6 +46,17 @@
                         <a href=""><i class="fab fa-instagram"></i></a>
                         <a href=""><i class="fab fa-youtube"></i></a>
                     </div>
+                </div> {% endcomment %}
+                <div class="col-lg-3 col-md-4 d-flex">
+                    {% if request.user.is_authenticated %}
+                        <a href="" class="btn btn-dark me-2">
+                            {{ user.username }}
+                        </a>
+                        <a href="{% url "logout" %}" class="btn btn-outline-dark ml-2">Log out</a>
+                    {% else %}
+                        <a href="{% url "login" %}" class="btn btn-outline-dark me-2">Sign In</a>
+                        <a href="{% url "signup" %}" class="btn btn-dark ml-2">Sign Up</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

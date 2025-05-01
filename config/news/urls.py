@@ -9,4 +9,7 @@ urlpatterns = [
     path("technology/", technology_news, name="technology"),
     path("local/", local_news, name="local"),
     path("overseas/", overseas_news, name="overseas"),
+    path("registrate/", SignUpView.as_view(), name="signup"),
+    path("login/", CustomLoginView.as_view(), name="login"),
+    path("logout/", log_out, name="logout"),
 ]

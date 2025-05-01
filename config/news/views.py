@@ -1,4 +1,9 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
+from django.contrib.auth import logout
+from django.urls import reverse_lazy
 from .models import *
 
 def home_page(request):
@@ -64,3 +69,18 @@ def overseas_news(request):
     context = { "overseas_news" : sports_news }
 
     return render(request, "overseas.html", context)
+
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    template_name = "user/registrate.html"
+    success_url = reverse_lazy("login")
+
+class CustomLoginView(LoginView):
+    template_name = "user/login.html"
+
+def log_out(request):
+    if request.method == "POST":
+        logout(request)
+
+        return redirect("home")
+    return render(request, "user/logout.html")
