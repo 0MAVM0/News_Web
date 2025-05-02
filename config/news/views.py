@@ -47,14 +47,13 @@ def single_page(request, slug):
     if request.method == "POST":
         if not request.user.is_authenticated:
             return redirect("login")
-        else:
-            message = request.POST.get("message")
+        message = request.POST.get("message")
 
-            if message:
-                comment = Comment(user=request.user, comment=message, news=news)
-                comment.save()
+        if message:
+            comment = Comment(user=request.user, comment=message, news=news)
+            comment.save()
 
-                return redirect("single_page", slug=slug)
+            return redirect("single_page", slug=slug)
 
     context = {
         "a_piece_of_news" : news,
